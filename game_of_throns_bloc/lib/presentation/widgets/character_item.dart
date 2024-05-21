@@ -20,8 +20,8 @@ class CharacterItem extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          const BoxShadow(
+        boxShadow: const [
+          BoxShadow(
             color: Colors.black26,
             offset: Offset(0, 4),
             blurRadius: 8,
@@ -29,42 +29,46 @@ class CharacterItem extends StatelessWidget {
         ],
       ),
       child: InkWell(
+        //?pushnamed and push replase
         onTap: () => Navigator.pushNamed(context, characterDetailsScreen,
             arguments: character),
         child: GridTile(
-          footer: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.black54, Colors.black26],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+          footer: Hero(
+            tag: character.id!,
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.black54, Colors.black26],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                ),
               ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(8),
-                bottomRight: Radius.circular(8),
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                character.fullName!,
+                style: const TextStyle(
+                  height: 1.3,
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 2,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                textAlign: TextAlign.center,
               ),
-            ),
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              character.fullName!,
-              style: const TextStyle(
-                height: 1.3,
-                fontSize: 18,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                shadows: [
-                  Shadow(
-                    offset: Offset(0, 2),
-                    blurRadius: 2,
-                    color: Colors.black,
-                  ),
-                ],
-              ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              textAlign: TextAlign.center,
             ),
           ),
           child: ClipRRect(

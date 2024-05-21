@@ -102,7 +102,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
           return buildLoadedListWidgets(context);
         } else {
           return const Center(
-            child: Text('find errro'),
+            child: Text('Charcter is comming Know'),
           );
         }
       },
@@ -135,7 +135,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
       child: Scaffold(
         appBar: AppBar(
           // ignore: prefer_const_constructors
-          backgroundColor: Color.fromARGB(249, 221, 221, 111),
+          backgroundColor: Color.fromARGB(248, 139, 232, 245),
           leading: _isSearching
               ? const BackButton(
                   color: Color(0xfaafafaa),
